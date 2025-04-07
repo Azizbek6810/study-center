@@ -5,7 +5,24 @@
   "projects": {
     "study-center": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -94,5 +111,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9b9209ab-ce5a-447e-9fc7-1b7bfa8557c5"
   }
 }
