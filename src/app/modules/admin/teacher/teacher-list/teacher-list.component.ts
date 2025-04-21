@@ -1,36 +1,22 @@
-import { Component } from '@angular/core';
-
-interface Person {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-}
+import { Component, OnInit } from '@angular/core';
+import { TeachersService } from '../services/teachers.service';
+import { TeachersResponse } from '../models/teachers.model';
 
 @Component({
   selector: 'app-teacher-list',
   templateUrl: './teacher-list.component.html',
-  styleUrls: ['./teacher-list.component.scss'],
+  styleUrls: ['./teacher-list.component.css'],
 })
-export class TeacherListComponent {
-  listOfData: Person[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-  ];
+export class TeacherListComponent implements OnInit {
+
+
+  teachers: TeachersResponse[] = [];
+
+  constructor(private $teachers: TeachersService) {}
+
+  ngOnInit(): void {
+    this.$teachers.getAll().subscribe((result) => {
+      this.teachers = result
+    });
+  }
 }
